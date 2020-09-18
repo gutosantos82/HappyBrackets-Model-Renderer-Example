@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ac14a86-6248-4999-beb1-94c7835de615" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/BoidDronesConcept.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/HueCycleChorusConcept.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/PoppingSqueakingConcept.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Device/HappyBrackets/data/audio/simple_car_noise.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/production/The-Mind-at-Work/" />
     <ignored path="$PROJECT_DIR$/build/test/The-Mind-at-Work/" />
@@ -21,52 +20,53 @@
     <option name="PARALLEL_COMPILATION" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/BoidDronesConcept.java">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/HueCycleChorusConcept.java">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1005">
+              <caret line="105" column="33" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2822#2823#0" expanded="true" />
+                <element signature="e#2906#2907#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/PoppingSqueakingConcept.java">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="103" column="42" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
-              <folding>
-                <element signature="e#1071#1072#0" expanded="true" />
-                <element signature="e#1096#1097#0" expanded="true" />
-                <element signature="e#3434#3435#0" expanded="true" />
-                <element signature="e#3495#3496#0" expanded="true" />
-                <element signature="e#4015#4016#0" expanded="true" />
-                <element signature="e#4055#4056#0" expanded="true" />
-                <element signature="e#3611#3612#0" expanded="true" />
-                <element signature="e#3667#3668#0" expanded="true" />
-                <element signature="e#4189#4190#0" expanded="true" />
-                <element signature="e#4231#4232#0" expanded="true" />
-                <element signature="e#3789#3790#0" expanded="true" />
-                <element signature="e#3843#3844#0" expanded="true" />
-                <element signature="e#3881#3882#0" expanded="true" />
-                <element signature="e#3931#3932#0" expanded="true" />
-                <element signature="e#3978#3979#0" expanded="true" />
-                <element signature="e#4022#4023#0" expanded="true" />
-                <element signature="e#4067#4068#0" expanded="true" />
-                <element signature="e#4105#4106#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="128">
+              <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -91,6 +91,7 @@
         <option value="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/PoppingSqueakingConcept.java" />
         <option value="$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericGranularRenderer.java" />
         <option value="$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java" />
+        <option value="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java" />
       </list>
     </option>
   </component>
@@ -100,9 +101,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1317" />
+    <option name="width" value="1440" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -126,6 +127,32 @@
             <path>
               <item name="The-Mind-at-Work" type="b2602c69:ProjectViewProjectNode" />
               <item name="The-Mind-at-Work" type="462c0819:PsiDirectoryNode" />
+              <item name="Device" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The-Mind-at-Work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The-Mind-at-Work" type="462c0819:PsiDirectoryNode" />
+              <item name="Device" type="462c0819:PsiDirectoryNode" />
+              <item name="HappyBrackets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The-Mind-at-Work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The-Mind-at-Work" type="462c0819:PsiDirectoryNode" />
+              <item name="Device" type="462c0819:PsiDirectoryNode" />
+              <item name="HappyBrackets" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The-Mind-at-Work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The-Mind-at-Work" type="462c0819:PsiDirectoryNode" />
+              <item name="Device" type="462c0819:PsiDirectoryNode" />
+              <item name="HappyBrackets" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="audio" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The-Mind-at-Work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The-Mind-at-Work" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -134,6 +161,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="the_mind_at_work" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="The-Mind-at-Work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The-Mind-at-Work" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="the_mind_at_work" type="462c0819:PsiDirectoryNode" />
+              <item name="sonic_concepts" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -141,7 +175,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600316272164" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600402050452" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -154,6 +188,7 @@
       <recent name="the_mind_at_work.renderers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Device/HappyBrackets/data/audio" />
       <recent name="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts" />
     </key>
   </component>
@@ -213,17 +248,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1317" height="877" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23880596" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24959612" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Problems" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49353796" weight="0.32840723" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.39444444" weight="0.34323922" />
@@ -232,60 +266,63 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49676898" weight="0.32840723" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.60555553" side_tool="true" visible="true" weight="0.34323922" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="8" sideWeight="0.60555553" side_tool="true" visible="true" weight="0.34267515" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4921875" weight="0.32838038" />
-      <window_info anchor="right" id="Maven" />
+      <window_info anchor="bottom" id="Problems" order="11" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" sideWeight="0.496063" weight="0.1648" />
       <window_info anchor="right" id="Palette" order="2" />
-      <window_info anchor="right" id="HappyBrackets" order="3" sideWeight="0.496063" visible="true" weight="0.27847221" />
+      <window_info anchor="right" id="HappyBrackets" order="3" sideWeight="0.496063" visible="true" weight="0.2532189" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" x="105" y="191" width="1080" height="530" id="Documentation" order="7" type="FLOATING" />
       <window_info anchor="right" id="Coverage" order="8" sideWeight="0.503937" side_tool="true" weight="0.20553781" />
+      <window_info anchor="right" id="Maven" order="9" />
+      <window_info anchor="right" id="Ant Build" order="10" />
     </layout>
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.sh" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/BoidDronesConcept.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/HueCycleChorusConcept.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/PoppingSqueakingConcept.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="103" column="42" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
+        <state relative-caret-position="128">
+          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/PoppingSqueakingConcept.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/HueCycleChorusConcept.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/BoidDronesConcept.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="105" column="33" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="33" />
           <folding>
-            <element signature="e#1071#1072#0" expanded="true" />
-            <element signature="e#1096#1097#0" expanded="true" />
-            <element signature="e#3434#3435#0" expanded="true" />
-            <element signature="e#3495#3496#0" expanded="true" />
-            <element signature="e#4015#4016#0" expanded="true" />
-            <element signature="e#4055#4056#0" expanded="true" />
-            <element signature="e#3611#3612#0" expanded="true" />
-            <element signature="e#3667#3668#0" expanded="true" />
-            <element signature="e#4189#4190#0" expanded="true" />
-            <element signature="e#4231#4232#0" expanded="true" />
-            <element signature="e#3789#3790#0" expanded="true" />
-            <element signature="e#3843#3844#0" expanded="true" />
-            <element signature="e#3881#3882#0" expanded="true" />
-            <element signature="e#3931#3932#0" expanded="true" />
-            <element signature="e#3978#3979#0" expanded="true" />
-            <element signature="e#4022#4023#0" expanded="true" />
-            <element signature="e#4067#4068#0" expanded="true" />
-            <element signature="e#4105#4106#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2822#2823#0" expanded="true" />
+            <element signature="e#2906#2907#0" expanded="true" />
           </folding>
         </state>
       </provider>

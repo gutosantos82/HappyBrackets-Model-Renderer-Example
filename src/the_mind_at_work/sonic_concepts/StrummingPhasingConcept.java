@@ -1,4 +1,4 @@
-package the_mind_at_work_sonic_concepts;
+package the_mind_at_work.sonic_concepts;
 
 import net.beadsproject.beads.data.Buffer;
 import net.beadsproject.beads.data.Pitch;
@@ -30,8 +30,10 @@ public class StrummingPhasingConcept implements HBAction {
 
     Clock clock;
     float timeDelay = 0;
-    float timeInterval = 2000;
+    float timeInterval = 20;
     float startTime = 0;
+
+    float r = 0, g = 0, b = 0;
 
     @Override
     public void action(HB hb) {
@@ -71,17 +73,22 @@ public class StrummingPhasingConcept implements HBAction {
         clock.addClockTickListener(new Clock.ClockTickListener() {
             @Override
             public void clockTick(double v, Clock clock) {
-                if (timeDelay > 0) {
-                    hb.doAtTime(hb.getSynchTime() + timeDelay, new Delay.DelayListener() {
-                        @Override
-                        public void delayComplete(double v, Object o) {
-                            pluck.setPosition(startTime);
-                        }
-                    });
-                } else {
-                    pluck.setPosition(startTime);
+                //sound
+                if(clock.getNumberTicks() % 100 == 0) {
+                    if (timeDelay > 0) {
+                        hb.doAtTime(hb.getSynchTime() + timeDelay, new Delay.DelayListener() {
+                            @Override
+                            public void delayComplete(double v, Object o) {
+                                pluck.setPosition(startTime);
+                                lightLoopTrigger();
+                            }
+                        });
+                    } else {
+                        pluck.setPosition(startTime);
+                    }
                 }
-
+                //light
+                lightUpdate();
             }
         });
         clock.start();
@@ -93,9 +100,27 @@ public class StrummingPhasingConcept implements HBAction {
                 setModLevel((float)control_val);
             }
         }.setDisplayRange(0, 3, DynamicControl.DISPLAY_TYPE.DISPLAY_DEFAULT);// End DynamicControl floatControl code
+    }
 
+    void lightLoopTrigger() {
+        if(modLevel.getCurrentValue() < 2) {
+            r = g = b = 1;
+        }
+    }
+
+    void lightUpdate() {
+        if(modLevel.getCurrentValue() < 2) {        //TODO get the crossfades working
+            r *= 0.09f;                             //TODO between light modes
+            g *= 0.09f;
+            b *= 0.09f;
+        } else {
+            //light sparkles
+        }
+
+        //code to set the light??
 
     }
+
 
     void setModLevel(float level) {
         modLevel.setValue(level);

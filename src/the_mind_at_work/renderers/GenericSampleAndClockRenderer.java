@@ -1,5 +1,6 @@
 package the_mind_at_work.renderers;
 
+import net.beadsproject.beads.core.UGen;
 import net.beadsproject.beads.data.Sample;
 import net.beadsproject.beads.data.SampleManager;
 import net.beadsproject.beads.ugens.Gain;
@@ -31,7 +32,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
     //audio objects
     GranularSamplePlayer gsp;
     SamplePlayer sp;
-    Gain out;                           //TODO Renderer should have a standard way to identify an "output" UGen.
+                              //TODO Renderer should have a standard way to identify an "output" UGen.
 
     //audio controls
     Glide gain;
@@ -44,11 +45,8 @@ public class GenericSampleAndClockRenderer extends Renderer {
 
     List<Sample> samples = new ArrayList<>();
 
-    public GenericSampleAndClockRenderer(HB hb) {
-        super(hb);
-    }
 
-    public void setup() {
+    public void setupAudio() {
 
         //construct audio elements
         pitch = new Glide(1);
@@ -66,10 +64,11 @@ public class GenericSampleAndClockRenderer extends Renderer {
         sp.setLoopType(SamplePlayer.LoopType.NO_LOOP_FORWARDS);
         sp.setPitch(pitch);
 
-        out = new Gain(1, gain);
+        //out = new Gain(1, gain);
+
         useGranular(true);
 
-        Clock clock = HB.createClock(500).addClockTickListener((offset, this_clock) -> {
+        RendererController.addClockTickListener((offset, this_clock) -> {
 
             if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == 0) {
                 new Thread(new Runnable() {
@@ -82,13 +81,13 @@ public class GenericSampleAndClockRenderer extends Renderer {
                         }
                         gsp.setPosition(clockLockPosition);
                         sp.setPosition(clockLockPosition);
+//                        brightWhite();
                     }
                 }).start();
 
             }
 
         });
-        clock.start();
     }
 
     public void addSample(String samplename) {

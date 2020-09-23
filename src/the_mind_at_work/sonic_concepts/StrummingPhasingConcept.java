@@ -110,11 +110,12 @@ public class StrummingPhasingConcept implements HBAction {
 
     void lightUpdate() {
         if(modLevel.getCurrentValue() < 2) {        //TODO get the crossfades working
-            r *= 0.09f;                             //TODO between light modes
+            rgb[0] *= 0.09f;                             //TODO between light modes
             g *= 0.09f;
             b *= 0.09f;
         } else {
             //light sparkles
+
         }
 
         //code to set the light??

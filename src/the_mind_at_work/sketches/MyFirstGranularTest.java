@@ -2,6 +2,8 @@ package the_mind_at_work.sketches;
 
 import net.happybrackets.core.HBAction;
 import net.happybrackets.device.HB;
+import net.happybrackets.sychronisedmodel.Renderer;
+import the_mind_at_work.renderers.GenericSampleAndClockRenderer;
 
 import java.lang.invoke.MethodHandles;
 
@@ -10,7 +12,11 @@ public class MyFirstGranularTest implements HBAction {
     public void action(HB hb) {
         hb.reset(); //Clears any running code on the device
 
-        
+        GenericSampleAndClockRenderer r = new GenericSampleAndClockRenderer(hb);
+
+        RendererController.setRenderer(GenericSampleAndClockRenderer.class);
+
+
 
     }
 

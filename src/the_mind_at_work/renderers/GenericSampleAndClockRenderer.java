@@ -46,7 +46,8 @@ public class GenericSampleAndClockRenderer extends Renderer {
     List<Sample> samples = new ArrayList<>();
 
 
-    public void setupAudio() {
+    public void setupAudio() {      //this should override a setupAudio function in Renderer
+                                    //also have a setupLight function too. Both are optional.
 
         //construct audio elements
         pitch = new Glide(1);
@@ -68,7 +69,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
 
         useGranular(true);
 
-        RendererController.addClockTickListener((offset, this_clock) -> {
+        RendererController.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
 
             if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == 0) {
                 new Thread(new Runnable() {
@@ -81,13 +82,34 @@ public class GenericSampleAndClockRenderer extends Renderer {
                         }
                         gsp.setPosition(clockLockPosition);
                         sp.setPosition(clockLockPosition);
-//                        brightWhite();
+                        lightLoopTrigger();
                     }
                 }).start();
 
             }
+            lightUpdate();
 
         });
+    }
+
+    void lightLoopTrigger() {
+        if(modLevel.getCurrentValue() < 2) {
+            r = g = b = 1;
+        }
+    }
+
+    void lightUpdate() {
+        if(modLevel.getCurrentValue() < 2) {        //TODO get the crossfades working
+            rgb[0] *= 0.09f;                             //TODO between light modes
+            g *= 0.09f;
+            b *= 0.09f;
+        } else {
+            //light sparkles
+
+        }
+
+        //code to set the light??
+
     }
 
     public void addSample(String samplename) {

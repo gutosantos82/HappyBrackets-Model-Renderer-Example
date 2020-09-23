@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ac14a86-6248-4999-beb1-94c7835de615" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/examples/models_and_renderers/LighsAndSoundExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/renderers/GenericSampleAndClockRenderer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/renderers/GenericSampleAndClockRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/sketches/MyFirstGranularTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/sonic_concepts/StrummingPhasingConcept$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/sonic_concepts/StrummingPhasingConcept$2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/sonic_concepts/StrummingPhasingConcept$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/sonic_concepts/StrummingPhasingConcept$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/the_mind_at_work/sketches/MyFirstGranularTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/the_mind_at_work/sketches/MyFirstGranularTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/production/The-Mind-at-Work/" />
     <ignored path="$PROJECT_DIR$/build/test/The-Mind-at-Work/" />
@@ -51,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="691">
-              <caret line="113" column="13" lean-forward="true" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
+            <state relative-caret-position="328">
+              <caret line="104" column="1" lean-forward="true" selection-start-line="104" selection-start-column="1" selection-end-line="122" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="70" column="48" lean-forward="true" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+            <state relative-caret-position="661">
+              <caret line="112" column="5" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -205,7 +193,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600838800874" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600839192751" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -280,6 +268,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23104435" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24959612" />
@@ -361,8 +350,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="113" column="13" lean-forward="true" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
+        <state relative-caret-position="328">
+          <caret line="104" column="1" lean-forward="true" selection-start-line="104" selection-start-column="1" selection-end-line="122" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -371,8 +360,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="70" column="48" lean-forward="true" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+        <state relative-caret-position="661">
+          <caret line="112" column="5" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
         </state>
       </provider>
     </entry>

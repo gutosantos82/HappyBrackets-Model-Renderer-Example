@@ -11,6 +11,7 @@ import net.happybrackets.core.HBAction;
 import net.happybrackets.core.scheduling.Clock;
 import net.happybrackets.device.HB;
 import net.happybrackets.sychronisedmodel.Renderer;
+import net.happybrackets.sychronisedmodel.RendererController;
 
 import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
@@ -94,15 +95,15 @@ public class GenericSampleAndClockRenderer extends Renderer {
 
     void lightLoopTrigger() {
         if(modLevel.getCurrentValue() < 2) {
-            r = g = b = 1;
+            rgb[0] = rgb[1] = rgb[2] = 0;
         }
     }
 
     void lightUpdate() {
         if(modLevel.getCurrentValue() < 2) {        //TODO get the crossfades working
             rgb[0] *= 0.09f;                             //TODO between light modes
-            g *= 0.09f;
-            b *= 0.09f;
+            rgb[1] *= 0.09f;
+            rgb[3] *= 0.09f;
         } else {
             //light sparkles
 

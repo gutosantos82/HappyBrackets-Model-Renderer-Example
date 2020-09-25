@@ -20,6 +20,7 @@ import net.happybrackets.device.HB;
 import net.happybrackets.sychronisedmodel.Boid;
 import net.happybrackets.sychronisedmodel.FlockingModel;
 import net.happybrackets.sychronisedmodel.Renderer;
+import net.happybrackets.sychronisedmodel.RendererController;
 import org.json.JSONObject;
 
 import java.lang.invoke.MethodHandles;
@@ -45,12 +46,10 @@ public class LighsAndSoundExample implements HBAction, HBReset {
 
     static final int PORT = 9001;   // this is silence
 
-    Renderer r;
-
     @Override
     public void doReset() {
-        r.turnOffLEDs();
-        r.disableSerial();
+        RendererController.turnOffLEDs();
+        RendererController.disableSerial();
     }
 
     @Override
@@ -317,31 +316,28 @@ public class LighsAndSoundExample implements HBAction, HBReset {
             }
         };
 
-        r.structure.add(new Renderer.Speaker( "cocofofo-Lenovo-Y720-15IKB",9,6, 0,"Speaker-Left", 0));
-        r.structure.add(new Renderer.Speaker( "augustos-mbp.ad.unsw.edu.au",10.5f,8, 0,"Speaker-Left", 0));
-        r.structure.add(new Renderer.Speaker( "hb-b827ebbf17a8",10.5f,8, 0,"Speaker-Left", 0));
-        r.structure.add(new Renderer.Speaker( "hb-b827ebbf17a8",10.5f,8, 0,"Speaker-Right", 1));
-        r.structure.add(new Renderer.Light( "hb-b827ebbf17a8",10.5f,8, 0,"Light-Right", 0));
+        RendererController.addRenderer(Renderer.Type.SPEAKER, "cocofofo-Lenovo-Y720-15IKB",9,6, 0,"Speaker-Left", 0);
+        RendererController.addRenderer(Renderer.Type.SPEAKER, "augustos-mbp.ad.unsw.edu.au",10.5f,8, 0,"Speaker-Left", 0);
+        RendererController.addRenderer(Renderer.Type.SPEAKER, "hb-b827ebbf17a8",10.5f,8, 0,"Speaker-Left", 0);
+        RendererController.addRenderer(Renderer.Type.SPEAKER, "hb-b827ebbf17a8",10.5f,8, 0,"Speaker-Right", 1);
+        RendererController.addRenderer(Renderer.Type.LIGHT,"hb-b827ebbf17a8",10.5f,8, 0,"Light-Right", 0);
 
-        r.structure.add(new Renderer.Light( "hb-b827ebb507fd",10.5f,8, 0,"Light-Right", 0));
-        r.structure.add(new Renderer.Speaker( "hb-b827ebb507fd",10.5f,8, 0,"Speaker-Right", 0));
-        r.structure.add(new Renderer.Speaker( "hb-b827ebb507fd",10.5f,8, 0,"Speaker-Right", 1));
+        RendererController.addRenderer(Renderer.Type.LIGHT,"hb-b827ebb507fd",10.5f,8, 0,"Light-Right", 0);
+        RendererController.addRenderer(Renderer.Type.SPEAKER, "hb-b827ebb507fd",10.5f,8, 0,"Speaker-Right", 0);
+        RendererController.addRenderer(Renderer.Type.SPEAKER, "hb-b827ebb507fd",10.5f,8, 0,"Speaker-Right", 1);
 
-        r.structure.add(new Renderer.Light("hb-b827ebaac945",9,6, 0,"Light-1", 0));
-        r.structure.add(new Renderer.Speaker( "hb-b827eb302afa",10.5f,8, 0,"Speaker-Left", 0));
+        RendererController.addRenderer(Renderer.Type.LIGHT,"hb-b827ebaac945",9,6, 0,"Light-1", 0);
+        RendererController.addRenderer(Renderer.Type.SPEAKER, "hb-b827eb302afa",10.5f,8, 0,"Speaker-Left", 0);
 
-        r.structure.add(new Renderer.Speaker("hb-b827eb999a03",120,200, 0,"Speaker-Left", 0));
-        r.structure.add(new Renderer.Speaker("hb-b827eb999a03",460,200, 0,"Speaker-Right", 1));
-        r.structure.add(new Renderer.Light("hb-b827eb999a03",120,90, 0,"Light-1", 0));
-        r.structure.add(new Renderer.Light("hb-b827eb999a03",120,310, 0,"Light-2", 1));
-        r.structure.add(new Renderer.Light("hb-b827eb999a03",460,310, 0,"Light-3", 2));
-        r.structure.add(new Renderer.Light("hb-b827eb999a03",460,90, 0,"Light-4", 3));
-
-        r.enableDevices();
-        r.setup();
+        RendererController.addRenderer(Renderer.Type.SPEAKER,"hb-b827eb999a03",120,200, 0,"Speaker-Left", 0);
+        RendererController.addRenderer(Renderer.Type.SPEAKER,"hb-b827eb999a03",460,200, 0,"Speaker-Right", 1);
+        RendererController.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",120,90, 0,"Light-1", 0);
+        RendererController.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",120,310, 0,"Light-2", 1);
+        RendererController.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",460,310, 0,"Light-3", 2);
+        RendererController.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",460,90, 0,"Light-4", 3);
 
         Clock clock = hb.createClock(CLOCK_INTERVAL).addClockTickListener((offset, this_clock) -> {/* Write your code below this line */
-            r.executeRender();
+            RendererController.executeRender();
         });
 
         //clock.start();
@@ -352,16 +348,16 @@ public class LighsAndSoundExample implements HBAction, HBReset {
             public void valueChanged(Boolean control_val) {// Write your DynamicControl code below this line
                 /* To create this, just type clockTimer */
                 if (control_val){
-                    r.enableSerial();
+                    RendererController.enableSerial();
                     clock.start();/* End Clock Timer */
-                    r.executeRender();
+                    RendererController.executeRender();
                 }
                 else {
                     clock.stop();
                     try {
                         Thread.sleep((long) 1000);
-                        r.turnOffLEDs();
-                        r.disableSerial();
+                        RendererController.turnOffLEDs();
+                        RendererController.disableSerial();
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
                     }

@@ -2,6 +2,199 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ac14a86-6248-4999-beb1-94c7835de615" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Device/HappyBrackets/HB.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Device/HappyBrackets/HB.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Device/HappyBrackets/HBVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Device/HappyBrackets/HBVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/META-INF/The-Mind-at-Work.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/basic/FrequencyEnvelope.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/basic/GainEnvelope.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/basic/HelloWorld.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/basic/PolyLimitedOutput.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/booleancontrol/BooleanControlSample$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/booleancontrol/BooleanControlSample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/booleancontrol/MonitorBoolean$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/booleancontrol/MonitorBoolean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/classobjectcontrols/GlobalCustomExample$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/classobjectcontrols/GlobalCustomExample$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/classobjectcontrols/GlobalCustomExample$SampleClassMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/classobjectcontrols/GlobalCustomExample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/classobjectcontrols/GlobalReceiveAccelerometer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/classobjectcontrols/GlobalReceiveAccelerometer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/classobjectcontrols/GlobalSendAccelerometer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/classobjectcontrols/GlobalSendAccelerometer$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/classobjectcontrols/GlobalSendAccelerometer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/ChangeControlTypes$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/ChangeControlTypes$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/ChangeControlTypes$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/ChangeControlTypes$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/ChangeControlTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/FloatBuddyControlSample$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/FloatBuddyControlSample$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/FloatBuddyControlSample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/FloatSliderControlSample$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/FloatSliderControlSample$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/FloatSliderControlSample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/FloatTextControlSample$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/FloatTextControlSample$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/FloatTextControlSample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/MonitorFloats$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/floatcontrol/MonitorFloats.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/globalcontrol/GlobalControl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/globalcontrol/GlobalControl$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/globalcontrol/GlobalControl$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/globalcontrol/GlobalControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/globalcontrol/TargetControl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/globalcontrol/TargetControl$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/globalcontrol/TargetControl$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/globalcontrol/TargetControl$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/globalcontrol/TargetControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/ChangeControlTypes$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/ChangeControlTypes$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/ChangeControlTypes$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/ChangeControlTypes$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/ChangeControlTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/IntegerBuddyControlSample$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/IntegerBuddyControlSample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/IntegerSliderControlSample$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/IntegerSliderControlSample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/IntegerTextControlSample$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/IntegerTextControlSample$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/IntegerTextControlSample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/MonitorIntegers$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/integerControl/MonitorIntegers.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/textcontrol/SampleTextControl$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/textcontrol/SampleTextControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/textcontrol/StringMonitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/triggercontrol/TriggerControlSample$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/controls/triggercontrol/TriggerControlSample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/clocks/SensorControlledBeadsClock$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/clocks/SensorControlledBeadsClock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/clocks/SensorControlledClock$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/clocks/SensorControlledClock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/clocks/SimpleClock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/clocks/VariableClock$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/clocks/VariableClock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/delay/DelayPitch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/envelope/EnvelopeTrigger$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/envelope/EnvelopeTrigger$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/envelope/EnvelopeTrigger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/AdjustSynchroniser$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/AdjustSynchroniser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowBoolean$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowBoolean$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowBoolean$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowBoolean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowFloats$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowFloats$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowFloats$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowFloats.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowInts$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowInts$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowInts$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/FollowInts.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/RunAtTime.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/ScheduleEvent$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/ScheduleEvent$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/ScheduleEvent$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/ScheduleEvent$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/ScheduleEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/ShowTime$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/ShowTime$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/events/scheduled/ShowTime.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/fmsynthesis/BasicFM$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/fmsynthesis/BasicFM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/fmsynthesis/RatioDepthFM$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/fmsynthesis/RatioDepthFM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/gpio/DigitalInGPIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/gpio/DigitalOutGPIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/gpio/PWMOutGPIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/gpio/PulseDigitalOutGPIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/midi/basic/MajorChord.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/midi/basic/MinorChord.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/midi/basic/SimpleMIDI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/midi/scales/CustomScale.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/midi/scales/MajorScale.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/midi/scales/MajorScaleModulo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/models_and_renderers/LighsAndSoundExample$1$colour.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/models_and_renderers/LighsAndSoundExample$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/models_and_renderers/LighsAndSoundExample$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/models_and_renderers/LighsAndSoundExample$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/models_and_renderers/LighsAndSoundExample$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/models_and_renderers/LighsAndSoundExample$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/models_and_renderers/LighsAndSoundExample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/multiple/SampleController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/multiple/SampleController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/multiple/SampleController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/multiple/SampleController$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/multiple/SampleController$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/multiple/SampleController$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/multiple/SampleController$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/multiple/SampleController$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/multiple/SampleController$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/multiple/SampleController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/GetControllerAddress.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCReceiveValues$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCReceiveValues.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSendAccelerometer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSendAccelerometer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSender$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSender$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSender$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSender$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSender$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSender$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSender$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSender$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/osc/OSCSender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/pihat/PiHatDigitalInGPIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/pihat/PiHatDigitalOutGPIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/pythonscript/RunCommandline$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/pythonscript/RunCommandline.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/pythonscript/RunProcessAndArguments$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/pythonscript/RunProcessAndArguments.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/AlternatingLoopedSamplePlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/LoopedSamplePlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/SampleChangeSpeed.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/SamplePitchShift.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/SimpleSamplePlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/sensorcontroller/SampleDirectionGyroscope$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/sensorcontroller/SampleDirectionGyroscope.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/sensorcontroller/SampleRateAccelerometer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/sensorcontroller/SampleRateAccelerometer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/sensorcontroller/SampleSpeedAndDirection$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/sensorcontroller/SampleSpeedAndDirection$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/sensorcontroller/SampleSpeedAndDirection$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/samples/sensorcontroller/SampleSpeedAndDirection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/accelerometer/MonitorAccelerometer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/accelerometer/MonitorAccelerometer$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/accelerometer/MonitorAccelerometer$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/accelerometer/MonitorAccelerometer$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/accelerometer/MonitorAccelerometer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/accelerometer/SimpleAccelerometer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/accelerometer/TripleAxisAccelerometer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/accelerometer/TripleAxisAccelerometer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/gyroscope/MonitorGyroscope$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/gyroscope/MonitorGyroscope$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/gyroscope/MonitorGyroscope$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/gyroscope/MonitorGyroscope$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/gyroscope/MonitorGyroscope.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/gyroscope/SimpleGyroscope$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/gyroscope/SimpleGyroscope.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/gyroscope/TripleAxisGyroscope$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/sensor/gyroscope/TripleAxisGyroscope.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/threads/ControlledThread$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/threads/ControlledThread$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/threads/ControlledThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/threads/CreatedThread$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/threads/CreatedThread$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/threads/CreatedThread$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/threads/CreatedThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/examples/threads/SimpleThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/sonic_concepts/BoidDronesConcept.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/sonic_concepts/HueCycleChorusConcept.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/production/The-Mind-at-Work/the_mind_at_work/sonic_concepts/PoppingSqueakingConcept.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examples/models_and_renderers/LighsAndSoundExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/examples/models_and_renderers/LighsAndSoundExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/the_mind_at_work/sketches/MyFirstGranularTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/the_mind_at_work/sketches/MyFirstGranularTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/production/The-Mind-at-Work/" />
@@ -39,8 +232,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1340">
-              <caret line="93" column="22" lean-forward="true" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
+            <state relative-caret-position="119">
+              <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,35 +253,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="155" column="20" selection-start-line="155" selection-start-column="16" selection-end-line="155" selection-end-column="20" />
+            <state relative-caret-position="1094">
+              <caret line="100" selection-start-line="100" selection-end-line="100" />
+              <folding>
+                <element signature="e#4856#4857#0" expanded="true" />
+                <element signature="e#4932#4933#0" expanded="true" />
+                <element signature="e#5028#5029#0" expanded="true" />
+                <element signature="e#5108#5109#0" expanded="true" />
+                <element signature="e#5204#5205#0" expanded="true" />
+                <element signature="e#5292#5293#0" expanded="true" />
+                <element signature="e#5383#5384#0" expanded="true" />
+                <element signature="e#5466#5467#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sketches/MyFirstGranularTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sketches/MyFirstGranularTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="29" column="66" selection-start-line="29" selection-start-column="66" selection-end-line="29" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/examples/models_and_renderers/LighsAndSoundExample.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="338" selection-start-line="319" selection-start-column="8" selection-end-line="338" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/Device/HappyBrackets/HB.jar!/net/happybrackets/sychronisedmodel/Renderer.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="143" column="16" selection-start-line="143" selection-start-column="16" selection-end-line="143" selection-end-column="16" />
+            <state relative-caret-position="825">
+              <caret line="154" column="57" lean-forward="true" selection-start-line="154" selection-start-column="57" selection-end-line="154" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -112,10 +306,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/PoppingSqueakingConcept.java" />
         <option value="$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericGranularRenderer.java" />
-        <option value="$PROJECT_DIR$/src/examples/models_and_renderers/LighsAndSoundExample.java" />
         <option value="$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java" />
         <option value="$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java" />
         <option value="$PROJECT_DIR$/src/the_mind_at_work/sketches/MyFirstGranularTest.java" />
+        <option value="$PROJECT_DIR$/src/examples/models_and_renderers/LighsAndSoundExample.java" />
       </list>
     </option>
   </component>
@@ -125,10 +319,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1920" />
-    <option name="height" value="977" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1987" />
+    <option name="y" value="25" />
+    <option name="width" value="1853" />
+    <option name="height" value="1175" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -139,7 +334,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -158,6 +352,13 @@
               <item name="The-Mind-at-Work" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="The-Mind-at-Work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="The-Mind-at-Work" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+              <item name="models_and_renderers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="The-Mind-at-Work" type="b2602c69:ProjectViewProjectNode" />
@@ -190,10 +391,11 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600839608240" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1601070454561" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -267,10 +469,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
+    <frame x="1987" y="25" width="1853" height="1175" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19957082" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2091865" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24959612" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -285,14 +486,14 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49676898" weight="0.32840723" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50143063" side_tool="true" visible="true" weight="0.03821656" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4985694" visible="true" weight="0.03821656" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5019369" side_tool="true" visible="true" weight="0.030592734" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4980631" visible="true" weight="0.030592734" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4921875" weight="0.32838038" />
       <window_info anchor="bottom" id="Problems" order="11" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" sideWeight="0.496063" weight="0.1648" />
       <window_info anchor="right" id="Palette" order="2" />
-      <window_info anchor="right" id="HappyBrackets" order="3" sideWeight="0.496063" visible="true" weight="0.19527897" />
+      <window_info anchor="right" id="HappyBrackets" order="3" sideWeight="0.496063" visible="true" weight="0.20199226" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
@@ -327,24 +528,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/Device/HappyBrackets/HB.jar!/net/happybrackets/sychronisedmodel/Renderer.class">
+    <entry file="jar://$PROJECT_DIR$/Device/HappyBrackets/HB.jar!/net/beadsproject/beads/data/SampleManager.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="143" column="16" selection-start-line="143" selection-start-column="16" selection-end-line="143" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/examples/models_and_renderers/LighsAndSoundExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="338" selection-start-line="319" selection-start-column="8" selection-end-line="338" />
+        <state relative-caret-position="90">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sonic_concepts/StrummingPhasingConcept.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1340">
-          <caret line="93" column="22" lean-forward="true" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
+        <state relative-caret-position="119">
+          <caret line="42" column="17" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -353,15 +547,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/renderers/GenericSampleAndClockRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="155" column="20" selection-start-line="155" selection-start-column="16" selection-end-line="155" selection-end-column="20" />
+        <state relative-caret-position="1094">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+          <folding>
+            <element signature="e#4856#4857#0" expanded="true" />
+            <element signature="e#4932#4933#0" expanded="true" />
+            <element signature="e#5028#5029#0" expanded="true" />
+            <element signature="e#5108#5109#0" expanded="true" />
+            <element signature="e#5204#5205#0" expanded="true" />
+            <element signature="e#5292#5293#0" expanded="true" />
+            <element signature="e#5383#5384#0" expanded="true" />
+            <element signature="e#5466#5467#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Device/HappyBrackets/HB.jar!/net/happybrackets/sychronisedmodel/Renderer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/the_mind_at_work/sketches/MyFirstGranularTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="29" column="66" selection-start-line="29" selection-start-column="66" selection-end-line="29" selection-end-column="66" />
+        <state relative-caret-position="435">
+          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/examples/models_and_renderers/LighsAndSoundExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="154" column="57" lean-forward="true" selection-start-line="154" selection-start-column="57" selection-end-line="154" selection-end-column="57" />
         </state>
       </provider>
     </entry>

@@ -14,11 +14,12 @@ import java.lang.invoke.MethodHandles;
 import java.net.SocketAddress;
 
 public class MyFirstGranularTest implements HBAction {
+    RendererController rc = RendererController.getInstance();
     @Override
     public void action(HB hb) {
         hb.reset(); //Clears any running code on the device
 
-        RendererController.setRendererClass(GenericSampleAndClockRenderer.class);
+        rc.setRendererClass(GenericSampleAndClockRenderer.class);
 
        //if the model is running on the Pi....
         FlockingModel myModel = new FlockingModel();
@@ -26,24 +27,21 @@ public class MyFirstGranularTest implements HBAction {
         myModel.setup2DSpaceSize(600, 400);
 
 
-        RendererController.addClockTickListener() {
+        rc.addClockTickListener((offset, this_clock) -> {
             myModel.update();
 
 
-            RendererController.renderers.forEach(r -> {
+            rc.renderers.forEach(r -> {
 
                 GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer) r;
 
                 //grab stuff from the model
-                x = model.getFieldIntensityAt(r.getLocation());
+                double x = myModel.getIntensityAtXY((int)myR.x, (int)myR.y);
 
                 //set the renderers
-                myR.setPitch(x);
+                myR.pitch((float)x);
             });
-        };
-
-
-
+        });
 
     }
 

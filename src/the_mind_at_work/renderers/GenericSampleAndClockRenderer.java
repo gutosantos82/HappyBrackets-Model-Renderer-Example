@@ -70,6 +70,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
 
         useGranular(true);
 
+        /*
         RendererController.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
 
             if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == 0) {
@@ -91,15 +92,19 @@ public class GenericSampleAndClockRenderer extends Renderer {
             lightUpdate();
 
         });
+        */
     }
 
     void lightLoopTrigger() {
+        /*
         if(modLevel.getCurrentValue() < 2) {
             rgb[0] = rgb[1] = rgb[2] = 0;
         }
+        */
     }
 
     void lightUpdate() {
+        /*
         if(modLevel.getCurrentValue() < 2) {        //TODO get the crossfades working
             rgb[0] *= 0.09f;                             //TODO between light modes
             rgb[1] *= 0.09f;
@@ -110,7 +115,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
         }
 
         //code to set the light??
-
+        */
     }
 
     public void addSample(String samplename) {

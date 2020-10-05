@@ -6,4 +6,5 @@
 .DS_Store
 
 build/
-.idea/
+.idea/workspace.xml
+Device/HappyBrackets/ramfs/stdout

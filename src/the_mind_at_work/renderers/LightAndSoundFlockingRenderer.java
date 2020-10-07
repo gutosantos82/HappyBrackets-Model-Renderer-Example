@@ -50,7 +50,7 @@ public class LightAndSoundFlockingRenderer extends Renderer {
 
     @Override
     public void setupLight() {
-        rc.displayColor(this, 18,1,0,0);
+        rc.displayColor(this, 1,0,0);
         colorMode(ColorMode.RGB, 255);
     }
 

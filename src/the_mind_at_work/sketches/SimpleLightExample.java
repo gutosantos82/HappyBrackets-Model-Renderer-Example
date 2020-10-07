@@ -38,7 +38,9 @@ public class SimpleLightExample implements HBAction, HBReset {
         rc.addRenderer(Renderer.Type.SPEAKER, "augustos-mbp.ad.unsw.edu.au",10.5f,8, 0,"Speaker-Left", 0);
         rc.addRenderer(Renderer.Type.LIGHT, "augustos-mbp.ad.unsw.edu.au",10.5f,8, 0,"Light-1", 0);
 
-        Clock clock = rc.addClockTickListener((offset, this_clock) -> {
+        Clock clock = rc.getInternalClock();
+
+        rc.addClockTickListener((offset, this_clock) -> {
             rc.renderers.forEach(r -> {
                 SimpleLightRenderer myR = (SimpleLightRenderer) r;
                 if(myR.type == Renderer.Type.LIGHT) {
@@ -60,7 +62,7 @@ public class SimpleLightExample implements HBAction, HBReset {
                     // System.out.println(myR.id + " - red: " + myR.rgb[0] + " green: " + myR.rgb[1] + " blue: " + myR.rgb[2]);
 
                     // After calculating the new color. Push it to the serial 'queue'
-                    rc.pushLightColor(myR, 18);
+                    rc.pushLightColor(myR);
                 }
             });
 

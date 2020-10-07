@@ -1,6 +1,7 @@
 package the_mind_at_work.sketches;
 
 import de.sciss.net.OSCMessage;
+import net.beadsproject.beads.ugens.Gain;
 import net.beadsproject.beads.ugens.WavePlayer;
 import net.happybrackets.core.HBAction;
 import net.happybrackets.core.HBReset;
@@ -49,6 +50,7 @@ public class SimpleFlockingExample implements HBAction, HBReset {
         rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",460,90, 0,"Light-4", 3);
         rc.addRenderer(Renderer.Type.SPEAKER, "augustos-mbp.ad.unsw.edu.au",460,200, 0,"Speaker-Left", 0);
         rc.addRenderer(Renderer.Type.LIGHT, "augustos-mbp.ad.unsw.edu.au",460,200, 0,"Light-1", 0);
+        rc.addRenderer(Renderer.Type.SPEAKER, "hb-b827eb01d68a",460,200, 0,"Speaker-Left", 0);
 
         FlockingModel myModel = new FlockingModel();  //HBSynchronisedModel2
         myModel.setup(this, hb, SynchronisedModel.ExecutionMode.LOCAL);
@@ -57,7 +59,9 @@ public class SimpleFlockingExample implements HBAction, HBReset {
         myModel.start();
 
 
-        Clock clock = rc.addClockTickListener((offset, this_clock) -> {
+        Clock clock  = rc.getInternalClock();
+
+        rc.addClockTickListener((offset, this_clock) -> {
             myModel.update();
             rc.renderers.forEach(r -> {
                 LightAndSoundFlockingRenderer myR = (LightAndSoundFlockingRenderer) r;
@@ -67,20 +71,22 @@ public class SimpleFlockingExample implements HBAction, HBReset {
                 if(myR.type == Renderer.Type.LIGHT) {
                     if(boidsAroundMe.size() > 0) {
                         int boidId = boidsAroundMe.get(0);
-                        rc.displayColor(myR, 16, myR.boidsColour.get(boidId).red, myR.boidsColour.get(boidId).green, myR.boidsColour.get(boidId).blue);
+                        rc.displayColor(myR, myR.boidsColour.get(boidId).red, myR.boidsColour.get(boidId).green, myR.boidsColour.get(boidId).blue);
                     } else {
-                        rc.displayColor(myR, 16, 1, 1, 1);
+                        rc.displayColor(myR, 1, 1, 1);
                     }
                 }
 
                 if(myR.type == Renderer.Type.SPEAKER) {
                     if (boidsAroundMe.size() == 0) {
                         int count = 0;
+                        ((Gain) myR.out).setGain(0f);
                         for (WavePlayer wp : myR.speaker) {
                             wp.setFrequency(myR.defaultFreq[count]);
                             count++;
                         }
                     } else {
+                        ((Gain) myR.out).setGain(0.1f);
                         for (WavePlayer wp : myR.speaker) {
                             wp.setFrequency(400 * (myR.id+2));
                         }

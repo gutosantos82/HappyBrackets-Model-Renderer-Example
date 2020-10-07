@@ -50,6 +50,7 @@ public class SimpleFlockingExample implements HBAction, HBReset {
         rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",460,90, 0,"Light-4", 3);
         rc.addRenderer(Renderer.Type.SPEAKER, "augustos-mbp.ad.unsw.edu.au",460,200, 0,"Speaker-Left", 0);
         rc.addRenderer(Renderer.Type.LIGHT, "augustos-mbp.ad.unsw.edu.au",460,200, 0,"Light-1", 0);
+        rc.addRenderer(Renderer.Type.SPEAKER, "hb-b827eb01d68a",460,200, 0,"Speaker-Left", 0);
 
         FlockingModel myModel = new FlockingModel();  //HBSynchronisedModel2
         myModel.setup(this, hb, SynchronisedModel.ExecutionMode.LOCAL);
@@ -58,7 +59,9 @@ public class SimpleFlockingExample implements HBAction, HBReset {
         myModel.start();
 
 
-        Clock clock = rc.addClockTickListener((offset, this_clock) -> {
+        Clock clock  = rc.getInternalClock();
+
+        rc.addClockTickListener((offset, this_clock) -> {
             myModel.update();
             rc.renderers.forEach(r -> {
                 LightAndSoundFlockingRenderer myR = (LightAndSoundFlockingRenderer) r;

@@ -1,39 +1,34 @@
 package the_mind_at_work.renderers;
 
-import net.beadsproject.beads.core.UGen;
 import net.beadsproject.beads.data.Sample;
 import net.beadsproject.beads.data.SampleManager;
-import net.beadsproject.beads.ugens.Gain;
 import net.beadsproject.beads.ugens.Glide;
 import net.beadsproject.beads.ugens.GranularSamplePlayer;
 import net.beadsproject.beads.ugens.SamplePlayer;
-import net.happybrackets.core.HBAction;
 import net.happybrackets.core.scheduling.Clock;
-import net.happybrackets.device.HB;
 import net.happybrackets.sychronisedmodel.Renderer;
 import net.happybrackets.sychronisedmodel.RendererController;
-
-import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This render allows you to:
  * load up a database of sounds
  * choose a sound to play
  * choose whether that sound is granular or straight
- *
- *
  */
 
 public class GenericSampleAndClockRenderer extends Renderer {
 
+    //list of sounds
+    static List<Sample> samples = new ArrayList<>();
+
+    //the renderer controller
+    RendererController rc = RendererController.getInstance();
+
     //audio objects
     GranularSamplePlayer gsp;
     SamplePlayer sp;
-                              //TODO Renderer should have a standard way to identify an "output" UGen.
 
     //audio controls
     Glide gain;
@@ -44,36 +39,56 @@ public class GenericSampleAndClockRenderer extends Renderer {
     double clockLockPosition = 0;
     float clockDelayMS = 0;
 
-    List<Sample> samples = new ArrayList<>();
+    //light data
+    double[] rgb = new double[]{0,0,0};
 
+    @Override
+    public void setupLight() {
+        Clock c = rc.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
+            System.out.println("Light renderer clock test tick " + this_clock.getNumberTicks());
+            if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == 0) {
 
-    public void setupAudio() {      //this should override a setupAudio function in Renderer
-                                    //also have a setupLight function too. Both are optional.
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep((long)clockDelayMS);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        lightLoopTrigger();
+                    }
+                }).start();
+            }
+            lightUpdate();
+        });
+        c.setInterval(50);  //TODO remove this line on update!!
+        c.start();
+    }
 
+    @Override
+    public void setupAudio() {
         //construct audio elements
         pitch = new Glide(1);
-
-        addSample("data/audio/Nylon_Guitar/Clean_A_harm.wav");
+        gsp = new GranularSamplePlayer(1);
+        sp = new SamplePlayer(1);
+        setSample(0);
         gsp.setKillOnEnd(false);
         gsp.setInterpolationType(SamplePlayer.InterpolationType.LINEAR);
         gsp.setLoopType(SamplePlayer.LoopType.NO_LOOP_FORWARDS);
         gsp.getGrainSizeUGen().setValue(100);
         gsp.getRandomnessUGen().setValue(0.1f);
         gsp.setPitch(pitch);
-
         sp.setKillOnEnd(false);
         sp.setInterpolationType(SamplePlayer.InterpolationType.LINEAR);
         sp.setLoopType(SamplePlayer.LoopType.NO_LOOP_FORWARDS);
         sp.setPitch(pitch);
-
-        //out = new Gain(1, gain);
-
         useGranular(true);
-
-        /*
-        RendererController.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
-
+        //set up a clock
+        Clock c = rc.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
+            System.out.println("Sound renderer clock test tick " + this_clock.getNumberTicks());
             if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == 0) {
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -84,41 +99,27 @@ public class GenericSampleAndClockRenderer extends Renderer {
                         }
                         gsp.setPosition(clockLockPosition);
                         sp.setPosition(clockLockPosition);
-                        lightLoopTrigger();
                     }
                 }).start();
 
             }
-            lightUpdate();
-
         });
-        */
+        c.setInterval(50);  //TODO remove this line on update!!
+        c.start();      //TODO: this code can be removed on the next update
     }
 
     void lightLoopTrigger() {
-        /*
-        if(modLevel.getCurrentValue() < 2) {
-            rgb[0] = rgb[1] = rgb[2] = 0;
-        }
-        */
+        rgb[0] = rgb[1] = rgb[2] = 255;
     }
 
     void lightUpdate() {
-        /*
-        if(modLevel.getCurrentValue() < 2) {        //TODO get the crossfades working
-            rgb[0] *= 0.09f;                             //TODO between light modes
-            rgb[1] *= 0.09f;
-            rgb[3] *= 0.09f;
-        } else {
-            //light sparkles
-
-        }
-
-        //code to set the light??
-        */
+        rgb[0] *= 0.99f;
+        rgb[1] *= 0.99f;
+        rgb[2] *= 0.99f;
+        rc.displayColor(this, 18,(int)rgb[0],(int)rgb[1],(int)rgb[2]);
     }
 
-    public void addSample(String samplename) {
+    public static void addSample(String samplename) {
         Sample sample = SampleManager.sample(samplename);
         if(sample != null) {
             samples.add(sample);
@@ -129,7 +130,6 @@ public class GenericSampleAndClockRenderer extends Renderer {
     }
 
     public void useGranular(boolean yes) {
-        //TODO could potentially do a crossfade
         out.clearInputConnections();
         if(yes) {
             out.addInput(gsp);
@@ -147,7 +147,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
 
     public void rate(float rate) {
         gsp.getRateUGen().setValue(rate);
-        sp.getRateUGen().setValue(rate);        //this should actually end up setting the pitch Glide object
+        sp.getRateUGen().setValue(rate);
     }
 
     public void grainOverlap(float overlap) {
@@ -192,21 +192,4 @@ public class GenericSampleAndClockRenderer extends Renderer {
         gsp.setSample(s);
     }
 
-
-    //<editor-fold defaultstate="collapsed" desc="Debug Start">
-
-    /**
-     * This function is used when running sketch in IntelliJ IDE for debugging or testing
-     *
-     * @param args standard args required
-     */
-    public static void main(String[] args) {
-
-        try {
-            HB.runDebug(MethodHandles.lookup().lookupClass());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    //</editor-fold>
 }

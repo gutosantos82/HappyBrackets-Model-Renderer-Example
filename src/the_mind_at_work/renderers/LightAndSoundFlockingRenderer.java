@@ -17,9 +17,11 @@ public class LightAndSoundFlockingRenderer extends Renderer {
     public float[] defaultFreq;
 
     public class colour {
+
         public int red;
         public int green;
         public int blue;
+
         colour(int red, int green, int blue) {
             this.red = red;
             this.green = green;

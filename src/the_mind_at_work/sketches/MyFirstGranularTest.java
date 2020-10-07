@@ -1,11 +1,8 @@
 package the_mind_at_work.sketches;
 
-import de.sciss.net.OSCListener;
-import de.sciss.net.OSCMessage;
 import net.happybrackets.core.HBAction;
+import net.happybrackets.core.scheduling.Clock;
 import net.happybrackets.device.HB;
-import net.happybrackets.sychronisedmodel.Flock;
-import net.happybrackets.sychronisedmodel.FlockingModel;
 import net.happybrackets.sychronisedmodel.Renderer;
 import net.happybrackets.sychronisedmodel.RendererController;
 import the_mind_at_work.renderers.GenericSampleAndClockRenderer;
@@ -13,35 +10,62 @@ import the_mind_at_work.renderers.GenericSampleAndClockRenderer;
 import java.lang.invoke.MethodHandles;
 import java.net.SocketAddress;
 
+
+//TODO: need RC to take care of strip size in config
+//TODO: need access to the RC clock to set tempo etc, or to make a new clock?
+//TODO: need to be able to blend colours, need a basic colour data structure? Or not?
+//TODO: clock should be already running
+//TODO: when the clock goes wrong we need to restart everything
+//TODO: copying a renderer to the device does not copy its nested classes
+
 public class MyFirstGranularTest implements HBAction {
     RendererController rc = RendererController.getInstance();
     @Override
     public void action(HB hb) {
         hb.reset(); //Clears any running code on the device
+        rc.reset();
 
+        //adding some samples
+        GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_A_harm.wav");
+        GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_B_harm.wav");
+        GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_D_harm.wav");
+        GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_E_harm.wav");
+        GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_G_harm.wav");
+
+        //set up the RC
         rc.setRendererClass(GenericSampleAndClockRenderer.class);
 
-       //if the model is running on the Pi....
-        FlockingModel myModel = new FlockingModel();
-        myModel.setup(this, hb);
-        myModel.setup2DSpaceSize(600, 400);
+        //set up the configuration of the system
+        rc.addRenderer(Renderer.Type.SPEAKER, "hb-b827eb999a03",120,200, 0,"Speaker-Left", 0);
+        rc.addRenderer(Renderer.Type.SPEAKER,"hb-b827eb999a03",460,200, 0,"Speaker-Right", 1);
+        rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",120,90, 0,"Light-1", 0);
+        rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",120,310, 0,"Light-2", 1);
+        rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",460,310, 0,"Light-3", 2);
+        rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",460,90, 0,"Light-4", 3);
 
 
-        rc.addClockTickListener((offset, this_clock) -> {
-            myModel.update();
+        Clock clock = rc.addClockTickListener((offset, this_clock) -> {
 
-
+            hb.setStatus("tick: " + this_clock.getNumberTicks());
             rc.renderers.forEach(r -> {
+                GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer)r;
 
-                GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer) r;
 
-                //grab stuff from the model
-                double x = myModel.getIntensityAtXY((int)myR.x, (int)myR.y);
+                //here we start mapping?
 
-                //set the renderers
-                myR.pitch((float)x);
+                if(myR.type == Renderer.Type.SPEAKER) {
+                    //speaker behaviours
+                    myR.pitch(hb.rng.nextFloat() + 1);
+                } else if(myR.type == Renderer.Type.LIGHT) {
+                    //light behaviours
+                }
+
+
+
             });
         });
+        clock.setInterval(100);
+        clock.start();
 
     }
 

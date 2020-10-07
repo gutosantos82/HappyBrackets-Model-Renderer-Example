@@ -101,15 +101,23 @@ public class GenericSampleAndClockRenderer extends Renderer {
         });
     }
 
-    void lightLoopTrigger() {
+    public void lightLoopTrigger() {
         rgbD[0] = rgbD[1] = rgbD[2] = 255;
     }
 
-    void lightUpdate() {
-        rgbD[0] *= 0.99f;
-        rgbD[1] *= 0.99f;
-        rgbD[2] *= 0.99f;
+    public void lightUpdate() {
+        rgbD[0] *= 0.8f;
+        rgbD[1] *= 0.8f;
+        rgbD[2] *= 0.8f;
         rc.displayColor(this, (int)rgbD[0],(int)rgbD[1],(int)rgbD[2]);
+    }
+
+    public void triggerBeat() {
+        lightLoopTrigger();
+        if(gsp != null) {
+            gsp.setPosition(clockLockPosition);
+            sp.setPosition(clockLockPosition);
+        }
     }
 
     public static void addSample(String samplename) {

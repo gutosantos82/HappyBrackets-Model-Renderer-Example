@@ -60,6 +60,7 @@ public class SimpleFlockingExample implements HBAction, HBReset {
 
 
         Clock clock  = rc.getInternalClock();
+        clock.stop();
 
         rc.addClockTickListener((offset, this_clock) -> {
             myModel.update();

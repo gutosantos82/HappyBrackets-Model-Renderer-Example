@@ -39,6 +39,7 @@ public class SimpleLightExample implements HBAction, HBReset {
         rc.addRenderer(Renderer.Type.LIGHT, "augustos-mbp.ad.unsw.edu.au",10.5f,8, 0,"Light-1", 0);
 
         Clock clock = rc.getInternalClock();
+        clock.stop();
 
         rc.addClockTickListener((offset, this_clock) -> {
             rc.renderers.forEach(r -> {
@@ -73,6 +74,7 @@ public class SimpleLightExample implements HBAction, HBReset {
 
         clock.setInterval(50);
         clock.start();
+
 
     }
 

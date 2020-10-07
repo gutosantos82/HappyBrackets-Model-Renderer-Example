@@ -1,6 +1,7 @@
 package the_mind_at_work.sketches;
 
 import de.sciss.net.OSCMessage;
+import net.beadsproject.beads.ugens.Gain;
 import net.beadsproject.beads.ugens.WavePlayer;
 import net.happybrackets.core.HBAction;
 import net.happybrackets.core.HBReset;
@@ -67,20 +68,22 @@ public class SimpleFlockingExample implements HBAction, HBReset {
                 if(myR.type == Renderer.Type.LIGHT) {
                     if(boidsAroundMe.size() > 0) {
                         int boidId = boidsAroundMe.get(0);
-                        rc.displayColor(myR, 16, myR.boidsColour.get(boidId).red, myR.boidsColour.get(boidId).green, myR.boidsColour.get(boidId).blue);
+                        rc.displayColor(myR, myR.boidsColour.get(boidId).red, myR.boidsColour.get(boidId).green, myR.boidsColour.get(boidId).blue);
                     } else {
-                        rc.displayColor(myR, 16, 1, 1, 1);
+                        rc.displayColor(myR, 1, 1, 1);
                     }
                 }
 
                 if(myR.type == Renderer.Type.SPEAKER) {
                     if (boidsAroundMe.size() == 0) {
                         int count = 0;
+                        ((Gain) myR.out).setGain(0f);
                         for (WavePlayer wp : myR.speaker) {
                             wp.setFrequency(myR.defaultFreq[count]);
                             count++;
                         }
                     } else {
+                        ((Gain) myR.out).setGain(0.1f);
                         for (WavePlayer wp : myR.speaker) {
                             wp.setFrequency(400 * (myR.id+2));
                         }

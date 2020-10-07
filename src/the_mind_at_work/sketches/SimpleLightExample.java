@@ -60,7 +60,7 @@ public class SimpleLightExample implements HBAction, HBReset {
                     // System.out.println(myR.id + " - red: " + myR.rgb[0] + " green: " + myR.rgb[1] + " blue: " + myR.rgb[2]);
 
                     // After calculating the new color. Push it to the serial 'queue'
-                    rc.pushLightColor(myR, 18);
+                    rc.pushLightColor(myR);
                 }
             });
 

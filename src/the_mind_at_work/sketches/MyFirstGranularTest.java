@@ -1,6 +1,7 @@
 package the_mind_at_work.sketches;
 
 import net.happybrackets.core.HBAction;
+import net.happybrackets.core.HBReset;
 import net.happybrackets.core.scheduling.Clock;
 import net.happybrackets.device.HB;
 import net.happybrackets.sychronisedmodel.Renderer;
@@ -12,13 +13,10 @@ import java.net.SocketAddress;
 
 
 //TODO: need RC to take care of strip size in config
-//TODO: need access to the RC clock to set tempo etc, or to make a new clock?
 //TODO: need to be able to blend colours, need a basic colour data structure? Or not?
-//TODO: clock should be already running
-//TODO: when the clock goes wrong we need to restart everything
 //TODO: copying a renderer to the device does not copy its nested classes
 
-public class MyFirstGranularTest implements HBAction {
+public class MyFirstGranularTest implements HBAction, HBReset {
     RendererController rc = RendererController.getInstance();
     @Override
     public void action(HB hb) {
@@ -36,36 +34,41 @@ public class MyFirstGranularTest implements HBAction {
         rc.setRendererClass(GenericSampleAndClockRenderer.class);
 
         //set up the configuration of the system
-        rc.addRenderer(Renderer.Type.SPEAKER, "hb-b827eb999a03",120,200, 0,"Speaker-Left", 0);
-        rc.addRenderer(Renderer.Type.SPEAKER,"hb-b827eb999a03",460,200, 0,"Speaker-Right", 1);
+//        rc.addRenderer(Renderer.Type.SPEAKER, "hb-b827eb999a03",120,200, 0,"Speaker-Left", 0);
+//        rc.addRenderer(Renderer.Type.SPEAKER,"hb-b827eb999a03",460,200, 0,"Speaker-Right", 1);
         rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",120,90, 0,"Light-1", 0);
         rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",120,310, 0,"Light-2", 1);
         rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",460,310, 0,"Light-3", 2);
         rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",460,90, 0,"Light-4", 3);
 
 
-        Clock clock = rc.addClockTickListener((offset, this_clock) -> {
+        rc.addClockTickListener((offset, this_clock) -> {
 
             hb.setStatus("tick: " + this_clock.getNumberTicks());
             rc.renderers.forEach(r -> {
                 GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer)r;
 
 
-                //here we start mapping?
+                //here we start mapping
+
+                myR.clockInterval(20);
 
                 if(myR.type == Renderer.Type.SPEAKER) {
                     //speaker behaviours
-                    myR.pitch(hb.rng.nextFloat() + 1);
+                    myR.pitch(hb.rng.nextFloat() *0.2f + 1);
+                    myR.useGranular(false);
                 } else if(myR.type == Renderer.Type.LIGHT) {
                     //light behaviours
-                }
+                    rc.displayColor(myR, hb.rng.nextInt(256), hb.rng.nextInt(256), hb.rng.nextInt(256));
+
+                     }
 
 
 
             });
         });
-        clock.setInterval(100);
-        clock.start();
+        rc.getInternalClock().setInterval(50);
+        rc.sendSerialcommand();
 
     }
 
@@ -84,6 +87,11 @@ public class MyFirstGranularTest implements HBAction {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void doReset() {
+        rc.reset();
     }
     //</editor-fold>
 }

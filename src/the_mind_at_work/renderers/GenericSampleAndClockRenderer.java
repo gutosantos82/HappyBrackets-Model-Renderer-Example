@@ -40,30 +40,27 @@ public class GenericSampleAndClockRenderer extends Renderer {
     float clockDelayMS = 0;
 
     //light data
-    double[] rgb = new double[]{0,0,0};
+    public double[] rgbD = new double[]{0,0,0};
 
     @Override
     public void setupLight() {
-        Clock c = rc.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
-            System.out.println("Light renderer clock test tick " + this_clock.getNumberTicks());
+        rc.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
             if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == 0) {
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep((long)clockDelayMS);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Thread.sleep((long)clockDelayMS);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
                         lightLoopTrigger();
-                    }
-                }).start();
+//                    }
+//                }).start();
             }
             lightUpdate();
         });
-        c.setInterval(50);  //TODO remove this line on update!!
-        c.start();
     }
 
     @Override
@@ -85,38 +82,34 @@ public class GenericSampleAndClockRenderer extends Renderer {
         sp.setPitch(pitch);
         useGranular(true);
         //set up a clock
-        Clock c = rc.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
-            System.out.println("Sound renderer clock test tick " + this_clock.getNumberTicks());
+        rc.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
             if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == 0) {
-
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep((long)clockDelayMS);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Thread.sleep((long)clockDelayMS);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
                         gsp.setPosition(clockLockPosition);
                         sp.setPosition(clockLockPosition);
-                    }
-                }).start();
+//                    }
+//                }).start();
 
             }
         });
-        c.setInterval(50);  //TODO remove this line on update!!
-        c.start();      //TODO: this code can be removed on the next update
     }
 
     void lightLoopTrigger() {
-        rgb[0] = rgb[1] = rgb[2] = 255;
+        rgbD[0] = rgbD[1] = rgbD[2] = 255;
     }
 
     void lightUpdate() {
-        rgb[0] *= 0.99f;
-        rgb[1] *= 0.99f;
-        rgb[2] *= 0.99f;
-        rc.displayColor(this, 18,(int)rgb[0],(int)rgb[1],(int)rgb[2]);
+        rgbD[0] *= 0.99f;
+        rgbD[1] *= 0.99f;
+        rgbD[2] *= 0.99f;
+        rc.displayColor(this, (int)rgbD[0],(int)rgbD[1],(int)rgbD[2]);
     }
 
     public static void addSample(String samplename) {

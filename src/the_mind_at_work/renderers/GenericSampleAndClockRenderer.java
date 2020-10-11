@@ -1,10 +1,9 @@
 package the_mind_at_work.renderers;
 
+import net.beadsproject.beads.data.Buffer;
 import net.beadsproject.beads.data.Sample;
 import net.beadsproject.beads.data.SampleManager;
-import net.beadsproject.beads.ugens.Glide;
-import net.beadsproject.beads.ugens.GranularSamplePlayer;
-import net.beadsproject.beads.ugens.SamplePlayer;
+import net.beadsproject.beads.ugens.*;
 import net.happybrackets.core.scheduling.Clock;
 import net.happybrackets.sychronisedmodel.Renderer;
 import net.happybrackets.sychronisedmodel.RendererController;
@@ -27,8 +26,15 @@ public class GenericSampleAndClockRenderer extends Renderer {
     RendererController rc = RendererController.getInstance();
 
     //audio objects
+    boolean useGranular = true;
     GranularSamplePlayer gsp;
     SamplePlayer sp;
+    Gain g;
+
+    //lfo
+    WavePlayer lfo;
+    float lfoDepth;
+    Mult mult;
 
     //audio controls
     Glide gain;
@@ -37,7 +43,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
     //other timing params
     int clockIntervalLock = 1;
     double clockLockPosition = 0;
-    float clockDelayMS = 0;
+    float clockDelayTicks = 0;
 
     //light data
     public double[] rgbD = new double[]{0,0,0};
@@ -45,19 +51,8 @@ public class GenericSampleAndClockRenderer extends Renderer {
     @Override
     public void setupLight() {
         rc.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
-            if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == 0) {
-
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            Thread.sleep((long)clockDelayMS);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-                        lightLoopTrigger();
-//                    }
-//                }).start();
+            if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == clockDelayTicks) {
+                lightLoopTrigger();
             }
             lightUpdate();
         });
@@ -80,27 +75,23 @@ public class GenericSampleAndClockRenderer extends Renderer {
         sp.setInterpolationType(SamplePlayer.InterpolationType.LINEAR);
         sp.setLoopType(SamplePlayer.LoopType.NO_LOOP_FORWARDS);
         sp.setPitch(pitch);
-        useGranular(true);
         //set up a clock
         rc.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
-            if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == 0) {
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            Thread.sleep((long)clockDelayMS);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
+            if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == clockDelayTicks) {
                         gsp.setPosition(clockLockPosition);
                         sp.setPosition(clockLockPosition);
-//                    }
-//                }).start();
-
             }
         });
+        gain = new Glide(1);
+        g = new Gain(1, gain);
+        useGranular(true);
+        out.addInput(g);
+        //lfo stuff
+        lfoDepth = 1;
+        lfo = new WavePlayer(50, Buffer.SINE);
     }
 
+    //light behaviours
     void lightLoopTrigger() {
         rgbD[0] = rgbD[1] = rgbD[2] = 255;
     }
@@ -111,6 +102,8 @@ public class GenericSampleAndClockRenderer extends Renderer {
         rgbD[2] *= 0.99f;
         rc.displayColor(this, (int)rgbD[0],(int)rgbD[1],(int)rgbD[2]);
     }
+
+    //audio controls
 
     public static void addSample(String samplename) {
         Sample sample = SampleManager.sample(samplename);
@@ -123,11 +116,12 @@ public class GenericSampleAndClockRenderer extends Renderer {
     }
 
     public void useGranular(boolean yes) {
-        out.clearInputConnections();
-        if(yes) {
-            out.addInput(gsp);
+        useGranular = yes;
+        g.clearInputConnections();
+        if (yes) {
+            g.addInput(gsp);
         } else {
-            out.addInput(sp);
+            g.addInput(sp);
         }
     }
 
@@ -176,13 +170,50 @@ public class GenericSampleAndClockRenderer extends Renderer {
         clockIntervalLock = interval;
     }
 
-    public void clockDelay(float delayMS) {
-        clockDelayMS = delayMS;
+    public void clockDelay(float delayTicks) {
+        clockDelayTicks = delayTicks;
+    }
+
+    public void lfoFreq(float freq) {
+        lfo.setFrequency(freq);
+    }
+
+    public void lfoDepth(float depth) {
+        lfoDepth = depth;
+    }
+
+    public void lfoWave(Buffer wave) {
+        lfo.setBuffer(wave);
     }
 
     public void sample(String sample) {
         Sample s = SampleManager.sample(sample);
         gsp.setSample(s);
+    }
+
+    public void position(double ms) {
+        gsp.setPosition(ms);
+        sp.setPosition(ms);
+    }
+
+    //LFO controls
+
+    public void setLFORingMod() {
+        //the LFO is multiplied to the combined signal of the GSP and SP.
+        clearLFO();
+        out.clearInputConnections();
+        Function f = new Function(lfo, g) {
+            @Override
+            public float calculate() {
+                return (1 - x[0] * lfoDepth) * x[1];
+            }
+        };
+        out.addInput(f);
+    }
+
+    public void clearLFO() {
+        out.clearInputConnections();
+        out.addInput(g);
     }
 
 }

@@ -122,9 +122,10 @@ public class MyFirstGranularTest_ModelExample implements HBAction, HBReset {
 
                 }
                 if(oscMessage.getName().equals("/beat")) {
+                    int beatCount = (int)oscMessage.getArg(0);
                     rc.renderers.forEach(renderer -> {
                         GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer) renderer;
-                        myR.triggerBeat();
+                        myR.triggerBeat(beatCount);
                     });
                 }
                 /* type your code above this line */

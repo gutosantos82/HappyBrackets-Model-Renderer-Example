@@ -45,20 +45,29 @@ public class GenericSampleAndClockRenderer extends Renderer {
     float clockDelayTicks = 0;
 
     //light data
-    public double[] rgbD = new double[]{0,0,0};
+    double[] rgbD = new double[]{0,0,0};
+    double brightness = 1;
+
+    //id for tracking event objects
+    public int currentSample = -1;
+    public int timeoutThresh = 50;
+    public int timeout = 0;
+    boolean audioIsSetup = false;
 
     @Override
     public void setupLight() {
         rc.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
-            if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == clockDelayTicks) {
-                triggerBeat();
+            int beatCount = (int)this_clock.getNumberTicks();
+            if (clockIntervalLock > 0 && beatCount % clockIntervalLock == clockDelayTicks) {
+                triggerBeat(beatCount);
             }
-            lightUpdate();
+            triggerTick();
         });
     }
 
     @Override
     public void setupAudio() {
+        audioIsSetup = true;
         //construct audio elements
         pitch = new Glide(1);
         gsp = new GranularSamplePlayer(1);
@@ -76,8 +85,9 @@ public class GenericSampleAndClockRenderer extends Renderer {
         sp.setPitch(pitch);
         //set up a clock
         rc.addClockTickListener((offset, this_clock) -> {       //assumes clock is running at 20ms intervals for now
-            if (clockIntervalLock > 0 && this_clock.getNumberTicks() % clockIntervalLock == clockDelayTicks) {
-                triggerBeat();
+            int beatCount = (int)this_clock.getNumberTicks();
+            if (clockIntervalLock > 0 && beatCount % clockIntervalLock == clockDelayTicks) {
+                triggerBeat(beatCount);
             }
         });
         gain = new Glide(1);
@@ -89,11 +99,19 @@ public class GenericSampleAndClockRenderer extends Renderer {
         lfo = new WavePlayer(50, Buffer.SINE);
     }
 
-    public void triggerBeat() {
+    public void triggerBeat(int beatCount) {
         lightLoopTrigger();
-        if(gsp != null) {
-            gsp.setPosition(clockLockPosition);
-            sp.setPosition(clockLockPosition);
+        if(audioIsSetup) {
+            triggerSampleWithOffset(0);
+        }
+    }
+
+    public void triggerTick() {
+        lightUpdate();
+        timeout++;
+        if(timeout > timeoutThresh) {
+            gain.setValue(0);
+            brightness = 0;
         }
     }
 
@@ -106,7 +124,11 @@ public class GenericSampleAndClockRenderer extends Renderer {
         rgbD[0] *= 0.9f;
         rgbD[1] *= 0.9f;
         rgbD[2] *= 0.9f;
-        rc.displayColor(this, (int)rgbD[0],(int)rgbD[1],(int)rgbD[2]);
+        rc.displayColor(this,
+                    (int)(rgbD[0] * brightness),
+                    (int)(rgbD[1] * brightness),
+                    (int)(rgbD[2] * brightness)
+        );
     }
 
     //audio controls
@@ -122,12 +144,14 @@ public class GenericSampleAndClockRenderer extends Renderer {
     }
 
     public void useGranular(boolean yes) {
-        useGranular = yes;
-        g.clearInputConnections();
-        if (yes) {
-            g.addInput(gsp);
-        } else {
-            g.addInput(sp);
+        if(audioIsSetup) {
+            useGranular = yes;
+            g.clearInputConnections();
+            if (yes) {
+                g.addInput(gsp);
+            } else {
+                g.addInput(sp);
+            }
         }
     }
 
@@ -135,91 +159,154 @@ public class GenericSampleAndClockRenderer extends Renderer {
         if(samples.size() > index) {
             gsp.setSample(samples.get(index));
             sp.setSample(samples.get(index));
+            currentSample = index;
         }
+        timeout = 0;
     }
 
     public void rate(float rate) {
         gsp.getRateUGen().setValue(rate);
         sp.getRateUGen().setValue(rate);
+        timeout = 0;
     }
 
     public void grainOverlap(float overlap) {
-        float interval = gsp.getGrainIntervalUGen().getValue();
-        gsp.getGrainSizeUGen().setValue(interval * overlap);
+        if(audioIsSetup) {
+            float interval = gsp.getGrainIntervalUGen().getValue();
+            gsp.getGrainSizeUGen().setValue(interval * overlap);
+        }
+        timeout = 0;
     }
 
     public void grainInterval(float interval) {
-        gsp.getGrainIntervalUGen().setValue(interval);
+        if(audioIsSetup) {
+            gsp.getGrainIntervalUGen().setValue(interval);
+        }
+        timeout = 0;
     }
 
     public void gain(float gain) {
-        this.gain.setValue(gain);
+        if(audioIsSetup) {
+            this.gain.setValue(gain);
+        }
+        timeout = 0;
     }
 
     public void random(float random) {
-        gsp.getRandomnessUGen().setValue(random);
+        if(audioIsSetup) {
+            gsp.getRandomnessUGen().setValue(random);
+        }
+        timeout = 0;
     }
 
     public void pitch(float pitch) {
-        this.pitch.setValue(pitch);
+        if(audioIsSetup) {
+            this.pitch.setValue(pitch);
+        }
+        timeout = 0;
     }
 
     public void loopStart(float start) {
-        gsp.getLoopStartUGen().setValue(start);
+        if(audioIsSetup) {
+            gsp.getLoopStartUGen().setValue(start);
+        }
+        timeout = 0;
     }
 
     public void loopEnd(float end) {
-        gsp.getLoopEndUGen().setValue(end);
+        if(audioIsSetup) {
+            gsp.getLoopEndUGen().setValue(end);
+        }
+        timeout = 0;
     }
 
     public void clockInterval(int interval) {
         clockIntervalLock = interval;
+        timeout = 0;
     }
 
     public void clockDelay(float delayTicks) {
         clockDelayTicks = delayTicks;
+        timeout = 0;
+    }
+
+    public void clockLockPosition(float positionMS) {
+        clockLockPosition = positionMS;
     }
 
     public void lfoFreq(float freq) {
-        lfo.setFrequency(freq);
+        if(audioIsSetup) {
+            lfo.setFrequency(freq);
+        }
+        timeout = 0;
     }
 
     public void lfoDepth(float depth) {
         lfoDepth = depth;
+        timeout = 0;
     }
 
     public void lfoWave(Buffer wave) {
-        lfo.setBuffer(wave);
+        if(audioIsSetup) {
+            lfo.setBuffer(wave);
+        }
+        timeout = 0;
     }
 
     public void sample(String sample) {
-        Sample s = SampleManager.sample(sample);
-        gsp.setSample(s);
+        if(audioIsSetup) {
+            Sample s = SampleManager.sample(sample);
+            gsp.setSample(s);
+        }
+        timeout = 0;
     }
 
     public void position(double ms) {
-        gsp.setPosition(ms);
-        sp.setPosition(ms);
+        if(audioIsSetup) {
+            gsp.setPosition(ms);
+            sp.setPosition(ms);
+        }
+        timeout = 0;
+    }
+
+    public void brightness(float brightness) {
+        this.brightness = brightness;
+        timeout = 0;
+    }
+
+    public void quiet() {
+        brightness(0);
+        gain(0);
+    }
+
+    public void triggerSampleWithOffset(double offset) {
+        position(clockLockPosition + offset);
     }
 
     //LFO controls
 
     public void setLFORingMod() {
-        //the LFO is multiplied to the combined signal of the GSP and SP.
-        clearLFO();
-        out.clearInputConnections();
-        Function f = new Function(lfo, g) {
-            @Override
-            public float calculate() {
-                return (1 - x[0] * lfoDepth) * x[1];
-            }
-        };
-        out.addInput(f);
+        if(audioIsSetup) {
+            //the LFO is multiplied to the combined signal of the GSP and SP.
+            clearLFO();
+            out.clearInputConnections();
+            Function f = new Function(lfo, g) {
+                @Override
+                public float calculate() {
+                    return (1 - x[0] * lfoDepth) * x[1];
+                }
+            };
+            out.addInput(f);
+        }
+        timeout = 0;
     }
 
     public void clearLFO() {
-        out.clearInputConnections();
-        out.addInput(g);
+        if(audioIsSetup) {
+            out.clearInputConnections();
+            out.addInput(g);
+        }
+        timeout = 0;
     }
 
 }

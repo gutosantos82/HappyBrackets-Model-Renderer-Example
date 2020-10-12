@@ -40,7 +40,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
     Glide pitch;
 
     //other timing params
-    int clockIntervalLock = 1;
+    int clockIntervalLock = 0;
     double clockLockPosition = 0;
     float clockDelayTicks = 0;
 

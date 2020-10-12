@@ -28,7 +28,7 @@ public class TheMindAtWorkController implements HBAction, HBReset {
         System.out.println("___The_Mind_At_Work___");
         hb.reset(); //Clears any running code on the device
         rc.reset();
-
+        rc.getInternalClock().setInterval(50);
         //adding some samples
         GenericSampleAndClockRenderer.samples.clear();
         GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_A_harm.wav");
@@ -36,10 +36,8 @@ public class TheMindAtWorkController implements HBAction, HBReset {
         GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_D_harm.wav");
         GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_E_harm.wav");
         GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_G_harm.wav");
-
         //set up the RC
         rc.setRendererClass(GenericSampleAndClockRenderer.class);
-
         //set up the configuration of the system
         rc.addRenderer(Renderer.Type.SPEAKER, "hb-b827eb999a03",0,0, 0,"Speaker-Left", 0);
         rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",0.1f,0, 0,"Light-1", 0);
@@ -47,20 +45,12 @@ public class TheMindAtWorkController implements HBAction, HBReset {
         rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",0.3f,0, 0,"Light-3", 2);
         rc.addRenderer(Renderer.Type.LIGHT,"hb-b827eb999a03",0.4f,0, 0,"Light-4", 3);
         rc.addRenderer(Renderer.Type.SPEAKER,"hb-b827eb999a03",0.5f,0, 0,"Speaker-Right", 1);
-
-        rc.getInternalClock().setInterval(50);
-
-        //set up
-        init();
-
+        //init to movement 1
+        m1(null);
         //this is just to flush out serial stuff?
         rc.addClockTickListener((offset, this_clock) -> {
             rc.sendSerialcommand();
         });
-
-        //this is just to ensure clock is running (it could be stopped)
-        rc.getInternalClock().start();
-
         //generic OSC listener - for any message, e.g., "/sqk" it tries to call the function, e.g., "sqk".
         //this could be set up as a built-in feature
         new OSCUDPListener(PORT) {
@@ -77,13 +67,10 @@ public class TheMindAtWorkController implements HBAction, HBReset {
             }
         };
     }
-    public void init() {
-        movement1(null);
-    }
 
     //osc messages
-
-    public void movement1(OSCMessage oscMessage) {
+    public void m1(OSCMessage oscMessage) {
+        hb.setStatus("Movement 1");
         rc.renderers.forEach(renderer -> {
             GenericSampleAndClockRenderer r = (GenericSampleAndClockRenderer)renderer;
             r.clockInterval(0);
@@ -106,6 +93,19 @@ public class TheMindAtWorkController implements HBAction, HBReset {
         });
     }
 
+    public void m2(OSCMessage oscMessage) {
+        hb.setStatus("Movement 2");
+    }
+
+    public void m3(OSCMessage oscMessage) {
+        hb.setStatus("Movement 3");
+    }
+
+    public void m4(OSCMessage oscMessage) {
+        hb.setStatus("Movement 4");
+    }
+
+
     public void sqk(OSCMessage oscMessage) {
         //grab args
         int arg = 0;
@@ -120,15 +120,13 @@ public class TheMindAtWorkController implements HBAction, HBReset {
             GenericSampleAndClockRenderer r = (GenericSampleAndClockRenderer)renderer;
             //determine if this renderer is active for this event
             if(size > 0 && meanSquare(x,y,r.x, r.y) < size*size) {
-                //yes we are in the blob
-                //do we need to trigger the sound?
+                //yes we are in the blob, do we need to trigger the sound?
                 if(        timeSinceEventStartMS <= 0
                         || r.currentSample != sound
                         || r.timeSinceLastTriggerMS() > (timeSinceEventStartMS + 100)
                 ) {
                     r.setSample(sound);
                     r.triggerSampleWithOffset(timeSinceEventStartMS);
-//                    hb.setStatus("TRIGGERED SOUND: " + sound + " " + timeSinceEventStartMS);
                 }
                 r.setRGB(255,0,0);
                 r.brightness(1);

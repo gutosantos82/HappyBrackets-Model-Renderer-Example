@@ -1,38 +1,31 @@
 package the_mind_at_work.sketches;
 
 import de.sciss.net.OSCMessage;
+import net.beadsproject.beads.data.SampleManager;
 import net.happybrackets.core.HBAction;
 import net.happybrackets.core.HBReset;
 import net.happybrackets.core.OSCUDPListener;
 import net.happybrackets.device.HB;
-import net.happybrackets.sychronisedmodel.FlockingModel;
 import net.happybrackets.sychronisedmodel.Renderer;
 import net.happybrackets.sychronisedmodel.RendererController;
-import net.happybrackets.sychronisedmodel.SynchronisedModel;
-import org.json.JSONObject;
 import the_mind_at_work.renderers.GenericSampleAndClockRenderer;
 
 import java.lang.invoke.MethodHandles;
 import java.net.SocketAddress;
-import java.util.List;
-
-
-//TODO: need RC to take care of strip size in config
-//TODO: need to be able to blend colours, need a basic colour data structure? Or not?
-//TODO: copying a renderer to the device does not copy its nested classes
 
 public class MyFirstGranularTest implements HBAction, HBReset {
 
-    final int PORT = 4000;   // this is silence
-
+    final int PORT = 4000;
     RendererController rc = RendererController.getInstance();
+
     @Override
     public void action(HB hb) {
-        System.out.println(" hi");
+        System.out.println("___The_Mind_At_Work___");
         hb.reset(); //Clears any running code on the device
         rc.reset();
 
         //adding some samples
+        GenericSampleAndClockRenderer.samples.clear();  //note this does not clear SampleManager.
         GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_A_harm.wav");
         GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_B_harm.wav");
         GenericSampleAndClockRenderer.addSample("data/audio/Nylon_Guitar/Clean_D_harm.wav");
@@ -55,90 +48,50 @@ public class MyFirstGranularTest implements HBAction, HBReset {
         //set up
         rc.renderers.forEach(r -> {
             GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer)r;
-            //here we start mapping
             myR.clockInterval(0);
+            myR.clockDelay(0);
             if(myR.type == Renderer.Type.SPEAKER) {
                 //speaker behaviours
                 myR.useGranular(true);
             }
         });
 
-//        FlockingModel myModel = new FlockingModel();  //HBSynchronisedModel2
-//        myModel.setup(this, hb, SynchronisedModel.ExecutionMode.LOCAL);
-//        myModel.setup2DSpaceSize(600, 400);
-//        myModel.setupFlock(10, 0);
-//        myModel.start();
-//
-//        rc.addClockTickListener((offset, this_clock) -> {
-//            myModel.update();
-//            //hb.setStatus("tick: " + this_clock.getNumberTicks());
-//            rc.renderers.forEach(r -> {
-//                GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer)r;
-//
-//                List<Integer> boidsAroundMe = myModel.getBoidsIdAroundXY((int)myR.x, (int)myR.y, 10);
-//
-//                if(myR.type == Renderer.Type.SPEAKER) {
-//                    //speaker behaviours
-//                    if(boidsAroundMe.size() > 0) {
-//                        myR.pitch(2);
-//                    } else {
-//                        myR.pitch(1);
-//                    }
-//                } else if(myR.type == Renderer.Type.LIGHT) {
-//                    //light behaviours
-//                        //rc.displayColor(myR, hb.rng.nextInt(256), hb.rng.nextInt(256), hb.rng.nextInt(256));
-//                        //rc.displayColor(myR, (int)myR.rgbD[0],(int)myR.rgbD[1],(int)myR.rgbD[2]);
-//                     }
-//
-//            });
-//        });
-
-        rc.addClockTickListener((offset, this_clock) -> {
-            rc.sendSerialcommand();
-        });
-
-        rc.getInternalClock().start();
-
-
-        /* type osclistener to create this code */
-        OSCUDPListener oscudpListener = new OSCUDPListener(PORT) {
+        //generic OSC listener - for any message, e.g., "/sqk" it tries to call the function, e.g., "sqk".
+        new OSCUDPListener(PORT) {
             @Override
             public void OSCReceived(OSCMessage oscMessage, SocketAddress socketAddress, long l) {
-                if(oscMessage.getName().equals("/sqk")) {
-                    int id = (int) oscMessage.getArg(0);
-                    int x = (int) oscMessage.getArg(1);
-                    int y = (int) oscMessage.getArg(2);
-                    int size = (int) oscMessage.getArg(3);
-                    int sparkle = (int) oscMessage.getArg(4);
-                    int brightness = (int) oscMessage.getArg(5);
-                    int sound = (int) oscMessage.getArg(6);
-
-                    rc.renderers.forEach(renderer -> {
-//                        if(Math.abs(renderer.x - x) < 10 && Math.abs(renderer.y - y) < 10) {
-//                        }
-                        if(renderer.type == Renderer.Type.SPEAKER) {
-                            GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer) renderer;
-                            myR.pitch((brightness / 127f) + 1);
-                        }
-                    });
-
-
+                try {
+                    this.getClass().getMethod(oscMessage.getName().substring(1), OSCMessage.class).invoke(this, oscMessage);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                if(oscMessage.getName().equals("/beat")) {
-                    rc.renderers.forEach(renderer -> {
-                        GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer) renderer;
-                        myR.triggerBeat();
-                    });
-                }
-                /* type your code above this line */
+
             }
         };
-        if (oscudpListener.getPort() < 0){ //port less than zero is an error
-            String error_message =  oscudpListener.getLastError();
-        } else {
-        }
-        /** end oscListener code */
+    }
 
+    void sqk(OSCMessage oscMessage) {
+        int arg = 0;
+        int id = (int)oscMessage.getArg(arg++);
+        int x = (int)oscMessage.getArg(arg++);
+        int y = (int)oscMessage.getArg(arg++);
+        int size = (int)oscMessage.getArg(arg++);
+        int sparkle = (int)oscMessage.getArg(arg++);
+        int brightness = (int)oscMessage.getArg(arg++);
+        int sound = (int)oscMessage.getArg(arg++);
+        rc.renderers.forEach(renderer -> {
+            if(renderer.type == Renderer.Type.SPEAKER) {
+                GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer) renderer;
+                myR.pitch((brightness / 127f) + 1);
+            }
+        });
+    }
+
+    void beat(OSCMessage oscMessage) {
+        rc.renderers.forEach(renderer -> {
+            GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer) renderer;
+            myR.triggerBeat();
+        });
     }
 
 

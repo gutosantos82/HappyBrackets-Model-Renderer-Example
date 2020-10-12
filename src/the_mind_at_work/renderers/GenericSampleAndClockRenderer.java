@@ -46,13 +46,14 @@ public class GenericSampleAndClockRenderer extends Renderer {
 
     //light data
     double[] rgbD = new double[]{0,0,0};
-    double brightness = 1;
+    double brightness = 0;
 
     //id for tracking event objects
     public int currentSample = -1;
-    public int timeoutThresh = 50;
-    public int timeout = 0;
+    int timeoutThresh = 50;
+    int timeout = 0;
     boolean audioIsSetup = false;
+    long timeOfLastTriggerMS = 0;
 
     @Override
     public void setupLight() {
@@ -90,7 +91,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
                 triggerBeat(beatCount);
             }
         });
-        gain = new Glide(1);
+        gain = new Glide(0);
         g = new Gain(1, gain);
         useGranular(true);
         out.addInput(g);
@@ -110,7 +111,9 @@ public class GenericSampleAndClockRenderer extends Renderer {
         lightUpdate();
         timeout++;
         if(timeout > timeoutThresh) {
-            gain.setValue(0);
+            if(audioIsSetup) {
+                gain.setValue(0);
+            }
             brightness = 0;
         }
     }
@@ -129,6 +132,13 @@ public class GenericSampleAndClockRenderer extends Renderer {
                     (int)(rgbD[1] * brightness),
                     (int)(rgbD[2] * brightness)
         );
+    }
+
+    public void setRGB(int r, int g, int b) {
+        rgbD[0] = r;
+        rgbD[1] = g;
+        rgbD[2] = b;
+
     }
 
     //audio controls
@@ -156,7 +166,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
     }
 
     public void setSample(int index) {
-        if(samples.size() > index) {
+        if(gsp != null && samples.size() > index) {
             gsp.setSample(samples.get(index));
             sp.setSample(samples.get(index));
             currentSample = index;
@@ -165,8 +175,10 @@ public class GenericSampleAndClockRenderer extends Renderer {
     }
 
     public void rate(float rate) {
-        gsp.getRateUGen().setValue(rate);
-        sp.getRateUGen().setValue(rate);
+        if(audioIsSetup) {
+            gsp.getRateUGen().setValue(rate);
+            sp.getRateUGen().setValue(rate);
+        }
         timeout = 0;
     }
 
@@ -202,6 +214,14 @@ public class GenericSampleAndClockRenderer extends Renderer {
     public void pitch(float pitch) {
         if(audioIsSetup) {
             this.pitch.setValue(pitch);
+        }
+        timeout = 0;
+    }
+
+    public void loopType(SamplePlayer.LoopType type) {
+        if(gsp != null) {
+            gsp.setLoopType(type);
+            sp.setLoopType(type);
         }
         timeout = 0;
     }
@@ -253,14 +273,6 @@ public class GenericSampleAndClockRenderer extends Renderer {
         timeout = 0;
     }
 
-    public void sample(String sample) {
-        if(audioIsSetup) {
-            Sample s = SampleManager.sample(sample);
-            gsp.setSample(s);
-        }
-        timeout = 0;
-    }
-
     public void position(double ms) {
         if(audioIsSetup) {
             gsp.setPosition(ms);
@@ -281,6 +293,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
 
     public void triggerSampleWithOffset(double offset) {
         position(clockLockPosition + offset);
+        timeOfLastTriggerMS = System.currentTimeMillis() - (int)offset;
     }
 
     //LFO controls
@@ -309,4 +322,7 @@ public class GenericSampleAndClockRenderer extends Renderer {
         timeout = 0;
     }
 
+    public long timeSinceLastTriggerMS() {
+        return System.currentTimeMillis() - timeOfLastTriggerMS;
+    }
 }

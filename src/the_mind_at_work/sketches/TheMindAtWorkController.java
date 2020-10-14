@@ -16,6 +16,13 @@ import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
 import java.net.SocketAddress;
 
+/**
+ * Coordinate space:
+ *
+ *   height is 1 unit
+ *   width is 2PI units
+ */
+
 public class TheMindAtWorkController implements HBAction, HBReset {
 
     final int PORT = 4000;
@@ -76,7 +83,7 @@ public class TheMindAtWorkController implements HBAction, HBReset {
             r.clockInterval(0);
             r.clockLockPosition(0);
             r.clockDelay(0);
-            r.useGranular(true);
+            r.useGranular(false);
             r.pitch(1);
             r.rate(1);
             r.random(0.01f);
@@ -86,15 +93,19 @@ public class TheMindAtWorkController implements HBAction, HBReset {
             r.brightness(0);
             r.grainInterval(40);
             r.grainOverlap(1.2f);
-//            r.setLFORingMod();
-//            r.lfoFreq(1f);
-//            r.lfoDepth(0.5f);
-//            r.lfoWave(Buffer.NOISE);
+            r.setLFORingMod();
+            r.lfoFreq(1f);
+            r.lfoDepth(0f);
+            r.lfoWave(Buffer.NOISE);
         });
     }
 
     public void m2(OSCMessage oscMessage) {
         hb.setStatus("Movement 2");
+        rc.renderers.forEach(renderer -> {
+            GenericSampleAndClockRenderer r = (GenericSampleAndClockRenderer)renderer;
+            r.clockInterval(5);
+        });
     }
 
     public void m3(OSCMessage oscMessage) {
@@ -116,6 +127,7 @@ public class TheMindAtWorkController implements HBAction, HBReset {
         float bright = (int)oscMessage.getArg(arg++) / 127f;
         int sound = (int)oscMessage.getArg(arg++);
         int timeSinceEventStartMS = (int)oscMessage.getArg(arg++);
+        hb.setStatus("" + sparkle);
         rc.renderers.forEach(renderer -> {
             GenericSampleAndClockRenderer r = (GenericSampleAndClockRenderer)renderer;
             //determine if this renderer is active for this event
@@ -128,18 +140,55 @@ public class TheMindAtWorkController implements HBAction, HBReset {
                     r.setSample(sound);
                     r.triggerSampleWithOffset(timeSinceEventStartMS);
                 }
-                r.setRGB(255,0,0);
+                r.setRGB(0,(int)(sparkle * 255),0);
                 r.brightness(1);
                 r.gain(1);
             }
         });
     }
 
-    public void beat(OSCMessage oscMessage) {
-        int beatCount = (int)oscMessage.getArg(0);
+    public void slant(OSCMessage oscMessage) {
+        float slant = (int)oscMessage.getArg(0) / 127f;
         rc.renderers.forEach(renderer -> {
-            GenericSampleAndClockRenderer myR = (GenericSampleAndClockRenderer) renderer;
-            myR.triggerBeat(beatCount);
+            GenericSampleAndClockRenderer r = (GenericSampleAndClockRenderer)renderer;
+            //TODO - use radial position to get phase offset
+
+        });
+    }
+
+    public void ldepth(OSCMessage oscMessage) {
+        float depth = (int)oscMessage.getArg(0) / 127f;
+        rc.renderers.forEach(renderer -> {
+            GenericSampleAndClockRenderer r = (GenericSampleAndClockRenderer)renderer;
+            r.lfoDepth(depth);
+        });
+    }
+
+    public void sinefield(OSCMessage oscMessage) {
+        float frequency = (int)oscMessage.getArg(0) / 127f;
+        float intensity = (int)oscMessage.getArg(1) / 127f;
+        rc.renderers.forEach(renderer -> {
+            GenericSampleAndClockRenderer r = (GenericSampleAndClockRenderer)renderer;
+            //TODO - use radial position to get hue offset or something
+
+        });
+    }
+
+    public void boids(OSCMessage oscMessage) {
+        int boids = oscMessage.getArgCount() / 4;
+        rc.renderers.forEach(renderer -> {
+            GenericSampleAndClockRenderer r = (GenericSampleAndClockRenderer)renderer;
+            float positionIntensity = 0, velIntensity = 0;
+            for(int i = 0; i < boids; i++) {
+                //position
+                float x = (float)oscMessage.getArg(i * 3 + 0);
+                float y = (float)oscMessage.getArg(i * 3 + 1);
+                float distance = distance(r.x, r.y, x, y);
+                positionIntensity += Math.max(0.2f - distance, 0) * 5f / boids;
+                float vmag = (float) oscMessage.getArg(i * 3 + 2);
+                velIntensity += vmag * Math.max(0.2f - distance, 0) * 5f / boids;
+                //TODO what to control with positionIntensity and velIntensity?
+            }
         });
     }
 
@@ -148,6 +197,9 @@ public class TheMindAtWorkController implements HBAction, HBReset {
         return (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
     }
 
+    float distance(float x1, float y1, float x2, float y2) {
+        return (float)Math.sqrt(meanSquare(x1,y1,x2,y2));
+    }
 
     //<editor-fold defaultstate="collapsed" desc="Debug Start">
 

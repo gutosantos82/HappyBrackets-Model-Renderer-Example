@@ -110,10 +110,18 @@ public class TheMindAtWorkController implements HBAction, HBReset {
 
     public void m3(OSCMessage oscMessage) {
         hb.setStatus("Movement 3");
+        rc.renderers.forEach(renderer -> {
+            GenericSampleAndClockRenderer r = (GenericSampleAndClockRenderer)renderer;
+            //TODO complete
+        });
     }
 
     public void m4(OSCMessage oscMessage) {
         hb.setStatus("Movement 4");
+        rc.renderers.forEach(renderer -> {
+            GenericSampleAndClockRenderer r = (GenericSampleAndClockRenderer)renderer;
+            //TODO complete
+        });
     }
 
 
@@ -144,6 +152,7 @@ public class TheMindAtWorkController implements HBAction, HBReset {
                 r.brightness(1);
                 r.gain(1);
             }
+            //TODO complete
         });
     }
 

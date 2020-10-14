@@ -4,7 +4,6 @@ import net.beadsproject.beads.data.Buffer;
 import net.beadsproject.beads.data.Sample;
 import net.beadsproject.beads.data.SampleManager;
 import net.beadsproject.beads.ugens.*;
-import net.happybrackets.core.scheduling.Clock;
 import net.happybrackets.sychronisedmodel.Renderer;
 import net.happybrackets.sychronisedmodel.RendererController;
 import java.util.ArrayList;
@@ -45,8 +44,12 @@ public class GenericSampleAndClockRenderer extends Renderer {
     float clockDelayTicks = 0;
 
     //light data
-    double[] rgbD = new double[]{0,0,0};
-    double brightness = 0;
+    private double[] sparkleD = new double[]{0, 0, 0};
+    double[] rgbD = new double[]{255, 255, 255};
+    double masterBrightness = 0;
+    double pulseBrightness = 1;
+    double decay = 0.7f;
+    double sparkle = 0;
 
     //id for tracking event objects
     public int currentSample = -1;
@@ -114,23 +117,26 @@ public class GenericSampleAndClockRenderer extends Renderer {
             if(audioIsSetup) {
                 gain.setValue(0);
             }
-            brightness = 0;
+            masterBrightness = 0;
         }
     }
 
     //light behaviours
     public void lightLoopTrigger() {
-        rgbD[0] = rgbD[1] = rgbD[2] = 255;
+        masterBrightness = pulseBrightness;
     }
 
     public void lightUpdate() {
-        rgbD[0] *= 0.9f;
-        rgbD[1] *= 0.9f;
-        rgbD[2] *= 0.9f;
+        //decay
+        masterBrightness *= decay;
+        //sparkle
+        sparkleD[0] = Math.random() * 255;
+        sparkleD[1] = Math.random() * 255;
+        sparkleD[2] = Math.random() * 255;
         rc.displayColor(this,
-                    (int)(rgbD[0] * brightness),
-                    (int)(rgbD[1] * brightness),
-                    (int)(rgbD[2] * brightness)
+                (int)clip((rgbD[0] + sparkle * sparkleD[0] * masterBrightness), 0, 255),
+                (int)clip((rgbD[1] + sparkle * sparkleD[1] * masterBrightness), 0, 255),
+                (int) clip((rgbD[2] + sparkle * sparkleD[2] * masterBrightness), 0, 255)
         );
     }
 
@@ -282,7 +288,22 @@ public class GenericSampleAndClockRenderer extends Renderer {
     }
 
     public void brightness(float brightness) {
-        this.brightness = brightness;
+        this.masterBrightness = brightness;
+        timeout = 0;
+    }
+
+    public void pulseBrightness(float pulseBrightness) {
+        this.pulseBrightness = pulseBrightness;
+        timeout = 0;
+    }
+
+    public void decay(float decay) {
+        this.decay = decay;
+        timeout = 0;
+    }
+
+    public void sparkle(float sparkle) {
+        this.sparkle = sparkle;
         timeout = 0;
     }
 
@@ -324,5 +345,8 @@ public class GenericSampleAndClockRenderer extends Renderer {
 
     public long timeSinceLastTriggerMS() {
         return System.currentTimeMillis() - timeOfLastTriggerMS;
+    }
+    public double clip(double val, double min, double max) {
+        return Math.min(Math.max(val, min), max);
     }
 }
